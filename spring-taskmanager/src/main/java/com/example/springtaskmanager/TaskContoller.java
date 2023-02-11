@@ -1,6 +1,10 @@
 package com.example.springtaskmanager;
 
 
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -59,8 +63,13 @@ public class TaskContoller {
         @GetMapping("/tasks/{id}")
         Task getTask(@PathVariable("id") Integer id) {
             // TODO: Implement this method
+            for(Task t1: taskList)
+            {
+                if(t1.getId()==id)
+                    return t1;
+            }
             // TODO: BONUS: Return 404 if task not found
-            return null;
+            return null; // Will have to learn how to return Error 404.
         }
 
         /**
@@ -71,8 +80,15 @@ public class TaskContoller {
         @DeleteMapping("/tasks/{id}")
         Task deleteTask(@PathVariable("id") Integer id) {
             // TODO: Implement this method
+            for(Task t1: taskList)
+            {
+                if(t1.getId()==id){
+                    taskList.remove(t1);
+                    return t1;
+                }
+            }
             // TODO: BONUS: Return 404 if task not found
-            return null;
+            return null; // Will have to learn how to return Error 404.
         }
 
         /**
@@ -85,6 +101,19 @@ public class TaskContoller {
         Task updateTask(@PathVariable("id") Integer id, @RequestBody Task task) {
             // TODO: BONUS: Update the task with given id
             // Request body might have only title, description or dueDate (not necessarily all fields)
+            for(Task t1: taskList)
+            {
+                if(t1.getId()==id){
+                    //Check which attribute needs to be updated and update it.
+                    if(task.title!= null && !task.title.equals(t1.getTitle()))
+                        t1.setTitle(task.title);
+                    if (task.description!= null && !task.description.equals(t1.getDescription()))
+                        t1.setDescription(task.description);
+                    if (task.dueDate != null && task.dueDate!=t1.getDueDate())
+                        t1.setDuedate(task.dueDate);
+                    return t1;
+                }
+            }
             return null;
         }
     }
