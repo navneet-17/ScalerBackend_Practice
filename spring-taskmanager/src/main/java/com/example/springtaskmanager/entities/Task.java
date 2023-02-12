@@ -1,13 +1,11 @@
-package com.example.springtaskmanager;
-
-import java.util.Date;
+package com.example.springtaskmanager.entities;
 
 public class Task {
 
     Integer id;
     String title;
     String description;
-    Date dueDate;
+    String dueDate;
 
     public Integer getId() {
         return id;
@@ -17,11 +15,11 @@ public class Task {
         this.id = id;
     }
 
-    public void setDueDate(Date dueDate) {
+    public void setDueDate(String dueDate) {
         this.dueDate = dueDate;
     }
 
-    public Task(int id, String title, String description, Date dueDate) {
+    public Task(Integer id, String title, String description, String dueDate) {
         this.id=id;
         this.title = title;
         this.description = description;
@@ -45,11 +43,11 @@ public class Task {
         this.description = description;
     }
 
-    public Date getDueDate() {
+    public String getDueDate() {
         return dueDate;
     }
 
-    public void setDuedate(Date duedate) {
+    public void setDuedate(String duedate) {
         this.dueDate = duedate;
     }
 }
