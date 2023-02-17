@@ -1,13 +1,15 @@
 package com.scaler.springtaskmanagerv2.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Index;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity(name="tasks")
+@Setter
+@Getter
 //@Table(indexes = @Index(columnList = "title"))
 public class TaskEntity extends BaseEntity {
     @Column(name="title",nullable = false,length = 150)
@@ -21,6 +23,9 @@ public class TaskEntity extends BaseEntity {
 
     @Column(name="due_date",nullable = true)
     Date dueDate;
+
+    @OneToMany
+    List<NoteEntity> notes;
 
 
 }
