@@ -9,5 +9,7 @@
         @Column(name="body",nullable = false,length = 500)
         String body;
 
+        @ManyToOne
+        TaskEntity taskEntity;
 
     }
