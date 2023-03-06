@@ -2,8 +2,8 @@ server:
   port: 8888
 spring:
   datasource:
-      driver-class-name: com.mysql.jdbc.Driver
-      url: jdbc:mysql://localhost:3306/blog
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/blog2
       username: blog_user
       password: blog_password
   jpa:
